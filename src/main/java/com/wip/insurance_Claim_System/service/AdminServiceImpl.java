@@ -6,7 +6,9 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.wip.insurance_Claim_System.dto.AdminCreateDto;
 import com.wip.insurance_Claim_System.dto.AdminDto;
+import com.wip.insurance_Claim_System.dto.AdminLoginDto;
 import com.wip.insurance_Claim_System.entity.Admin;
 import com.wip.insurance_Claim_System.exception.ResourceNotFoundException;
 import com.wip.insurance_Claim_System.repository.AdminRepository;
@@ -20,9 +22,9 @@ public class AdminServiceImpl implements AdminService {
 
     // CREATE ADMIN
     @Override
-    public void saveAdmin(AdminDto adminDto) {
+    public void saveAdmin(AdminCreateDto adminCreateDto) {
 
-        Admin admin = AdminConverter.toEntity(adminDto);
+        Admin admin = AdminConverter.toEntity(adminCreateDto);
         adminRepository.save(admin);
 
         System.out.println("Admin Created...");
@@ -74,5 +76,19 @@ public class AdminServiceImpl implements AdminService {
         adminRepository.deleteById(id);
 
         return getAllAdmins();
+    }
+
+ 
+    @Override
+    public AdminDto login(AdminLoginDto adminloginDto) {
+
+        Admin admin = adminRepository.findByEmail(adminloginDto.getEmail())
+                .orElseThrow(() -> new RuntimeException("Invalid Email"));
+
+        if (!admin.getPassword().equals(adminloginDto.getPassword())) {
+            throw new RuntimeException("Invalid Password");
+        }
+
+        return AdminConverter.toDto(admin);
     }
 }

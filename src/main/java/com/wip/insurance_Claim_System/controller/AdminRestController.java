@@ -1,6 +1,8 @@
 package com.wip.insurance_Claim_System.controller;
 
+import com.wip.insurance_Claim_System.dto.AdminCreateDto;
 import com.wip.insurance_Claim_System.dto.AdminDto;
+import com.wip.insurance_Claim_System.dto.AdminLoginDto;
 import com.wip.insurance_Claim_System.service.AdminService;
 
 import jakarta.validation.Valid;
@@ -19,14 +21,20 @@ public class AdminRestController {
     @Autowired
     private AdminService adminService;
 
+    @PostMapping("/login")
+    public ResponseEntity<AdminDto> login(
+            @RequestBody AdminLoginDto loginDto) {
+
+        return ResponseEntity.ok(adminService.login(loginDto));
+    }
     // ADD ADMIN
     @PostMapping("/addAdmin")
-    public ResponseEntity<?> addAdmin(@Valid @RequestBody AdminDto adminDto) {
+    public ResponseEntity<?> addAdmin(@Valid @RequestBody AdminCreateDto adminCreateDto) {
 
-        adminService.saveAdmin(adminDto);
+        adminService.saveAdmin(adminCreateDto);
 
         return new ResponseEntity<>(
-                "Admin " + adminDto.getAdminName() + " created successfully",
+                "Admin " + adminCreateDto.getAdminName() + " created successfully",
                 HttpStatus.OK
         );
     }

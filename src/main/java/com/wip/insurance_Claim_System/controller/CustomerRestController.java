@@ -1,6 +1,10 @@
 package com.wip.insurance_Claim_System.controller;
 
+import com.wip.insurance_Claim_System.dto.AdminDto;
+import com.wip.insurance_Claim_System.dto.AdminLoginDto;
+import com.wip.insurance_Claim_System.dto.CustomerCreateDto;
 import com.wip.insurance_Claim_System.dto.CustomerDto;
+import com.wip.insurance_Claim_System.dto.CustomerLoginDto;
 import com.wip.insurance_Claim_System.service.CustomerService;
 
 import jakarta.validation.Valid;
@@ -19,15 +23,22 @@ public class CustomerRestController {
     @Autowired
     private CustomerService customerService;
 
+    
+    @PostMapping("/  ")
+    public ResponseEntity<CustomerDto> login( @RequestBody CustomerLoginDto customerLoginDto) {
 
+        return ResponseEntity.ok(customerService.login(customerLoginDto));
+    }
+    
+    
     // ADD CUSTOMER
     @PostMapping("/addCustomer")
-    public ResponseEntity<?> addCustomer(@Valid @RequestBody CustomerDto customerDto) {
+    public ResponseEntity<?> addCustomer(@Valid @RequestBody CustomerCreateDto customerCreateDto) {
 
-        customerService.saveCustomer(customerDto);
+        customerService.saveCustomer(customerCreateDto);
 
         return new ResponseEntity<>(
-                "Customer " + customerDto.getName() + " created successfully",
+                "Customer " + customerCreateDto.getName() + " created successfully",
                 HttpStatus.OK
         );
     }

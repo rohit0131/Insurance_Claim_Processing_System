@@ -10,7 +10,7 @@ public class ClaimStatusConverter {
         ClaimStatusDto dto = new ClaimStatusDto();
 
         dto.setHistoryId(status.getHistoryId());
-        dto.setStatus(status.getStatus());
+        dto.setClaimStatus(status.getStatus());
         dto.setRemarks(status.getRemarks());
         dto.setUpdatedDate(status.getUpdatedDate());
 
@@ -21,7 +21,7 @@ public class ClaimStatusConverter {
 
         ClaimStatus status = new ClaimStatus();
 
-        status.setStatus(dto.getStatus());
+        status.setStatus(dto.getClaimStatus());
         status.setRemarks(dto.getRemarks());
         status.setUpdatedDate(dto.getUpdatedDate());
 

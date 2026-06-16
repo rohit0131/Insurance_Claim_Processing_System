@@ -2,6 +2,8 @@ package com.wip.insurance_Claim_System.repository;
 
 
 
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -9,5 +11,5 @@ import com.wip.insurance_Claim_System.entity.Customer;
 
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
-
+Optional<Customer> findByEmail(String email);
 }

@@ -1,5 +1,6 @@
 package com.wip.insurance_Claim_System.util;
 
+import com.wip.insurance_Claim_System.dto.CustomerCreateDto;
 import com.wip.insurance_Claim_System.dto.CustomerDto;
 import com.wip.insurance_Claim_System.entity.Customer;
 
@@ -18,13 +19,14 @@ public class CustomerConverter {
         return dto;
     }
 
-    public static Customer toEntity(CustomerDto dto) {
+    public static Customer toEntity(CustomerCreateDto dto) {
 
         Customer customer = new Customer();
         customer.setName(dto.getName());
         customer.setEmail(dto.getEmail());
         customer.setPhone(dto.getPhone());
         customer.setAddress(dto.getAddress());
+        customer.setPassword(dto.getPassword());
 
         return customer;
     }

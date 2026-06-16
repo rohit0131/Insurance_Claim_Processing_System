@@ -6,7 +6,9 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.wip.insurance_Claim_System.dto.CustomerCreateDto;
 import com.wip.insurance_Claim_System.dto.CustomerDto;
+import com.wip.insurance_Claim_System.dto.CustomerLoginDto;
 import com.wip.insurance_Claim_System.entity.Customer;
 import com.wip.insurance_Claim_System.exception.ResourceNotFoundException;
 import com.wip.insurance_Claim_System.repository.CustomerRepository;
@@ -20,8 +22,8 @@ public class CustomerServiceImpl implements CustomerService {
     private CustomerRepository customerRepository;
 
     @Override
-    public void saveCustomer(CustomerDto customerDto) {
-        Customer customer = CustomerConverter.toEntity(customerDto);
+    public void saveCustomer(CustomerCreateDto customerCreateDto) {
+        Customer customer = CustomerConverter.toEntity(customerCreateDto);
         customerRepository.save(customer);
         System.out.println("Customer Created...");
     }
@@ -65,6 +67,21 @@ public class CustomerServiceImpl implements CustomerService {
         customerRepository.deleteById(id);
         return getAllCustomers();
     }
+
+	@Override
+	public CustomerDto login(CustomerLoginDto customerLoginDto) {
+		   Customer customer = customerRepository.findByEmail(customerLoginDto.getEmail())
+		            .orElseThrow(() -> new RuntimeException("Invalid Email"));
+
+		    if (!customer.getPassword().equals(customerLoginDto.getPassword())) {
+		        throw new RuntimeException("Invalid Password");
+		    }
+
+		    return CustomerConverter.toDto(customer);
+		
+	}
+    
+    
 
 //    @Override
 //    public CustomerDto searchByEmail(String email) {

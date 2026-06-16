@@ -1,41 +1,38 @@
-package com.wip.insurance_Claim_System.entity;
+package com.wip.insurance_Claim_System.dto;
 
-import java.security.PublicKey;
-
-import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
-@Table(name = "admin")
 
-public class Admin {
+public class AdminCreateDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "admin_id")
     private Long adminId;
 
-    @Column(name = "admin_name", nullable = false, length = 100)
+    @NotBlank(message = "Admin Name is required")
     private String adminName;
 
-    @Column(unique = true, nullable = false)
+    @NotBlank(message = "Email is required")
+    @Email(message = "Invalid Email")
     private String email;
 
-    @Column(nullable = false, length = 50)
+    @NotBlank(message = "Role is required")
     private String role;
     
-    @Column(nullable = false, length = 50)
+    @NotBlank(message = "Role is required")
     private String password;
 
-
-	public Admin() {
+	public AdminCreateDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Admin(Long adminId, String adminName, String email, String role,String password) {
+	public AdminCreateDto(Long adminId, @NotBlank(message = "Admin Name is required") String adminName,
+			@NotBlank(message = "Email is required") @Email(message = "Invalid Email") String email,
+			@NotBlank(message = "Role is required") String role, @NotBlank(message = "Role is required")
+     String password) {
 		super();
 		this.adminId = adminId;
 		this.adminName = adminName;
@@ -75,7 +72,6 @@ public class Admin {
 	public void setRole(String role) {
 		this.role = role;
 	}
-
 	public String getPassword() {
 		return password;
 	}
@@ -86,8 +82,10 @@ public class Admin {
 
 	@Override
 	public String toString() {
-		return "Admin [adminId=" + adminId + ", adminName=" + adminName + ", email=" + email + ", role=" + role
-				+ ", password=" + password + "]";
+		return "AdminDto [adminId=" + adminId + ", adminName=" + adminName + ", email=" + email + ", role=" + role
+				+  ", password=" + password +"]";
 	}
-
+    
+    
+	
 }

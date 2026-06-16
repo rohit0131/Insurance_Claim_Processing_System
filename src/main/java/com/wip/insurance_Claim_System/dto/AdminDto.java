@@ -2,14 +2,9 @@ package com.wip.insurance_Claim_System.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 
 public class AdminDto {
-
-    private Long adminId;
+	private Long adminId;
 
     @NotBlank(message = "Admin Name is required")
     private String adminName;
@@ -75,5 +70,5 @@ public class AdminDto {
 	}
     
     
-	
+
 }

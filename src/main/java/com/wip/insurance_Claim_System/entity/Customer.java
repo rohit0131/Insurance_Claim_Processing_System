@@ -16,7 +16,8 @@ public class Customer {
 
     @Column(nullable = false, length = 50)
     private String name;
-
+    @Column(nullable = false, length = 50)
+    private String password;
     @Column(unique = true, nullable = false)
     private String email;
 
@@ -33,10 +34,11 @@ public class Customer {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Customer(Long customerId, String name, String email, String phone, String address, List<Policy> policies) {
+	public Customer(Long customerId, String name, String password, String email, String phone, String address, List<Policy> policies) {
 		super();
 		this.customerId = customerId;
 		this.name = name;
+		this.password=password;
 		this.email = email;
 		this.phone = phone;
 		this.address = address;
@@ -58,7 +60,14 @@ public class Customer {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	public String getPassword() {
+		return password;
+	}
 
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	public String getEmail() {
 		return email;
 	}
@@ -93,9 +102,11 @@ public class Customer {
 
 	@Override
 	public String toString() {
-		return "Customer [customerId=" + customerId + ", name=" + name + ", email=" + email + ", phone=" + phone
-				+ ", address=" + address + ", policies=" + policies + "]";
+		return "Customer [customerId=" + customerId + ", name=" + name + ", password=" + password + ", email=" + email
+				+ ", phone=" + phone + ", address=" + address + ", policies=" + policies + "]";
 	}
+
+	
     
     
 }

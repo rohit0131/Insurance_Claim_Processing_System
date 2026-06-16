@@ -1,5 +1,6 @@
 package com.wip.insurance_Claim_System.util;
 
+import com.wip.insurance_Claim_System.dto.AdminCreateDto;
 import com.wip.insurance_Claim_System.dto.AdminDto;
 import com.wip.insurance_Claim_System.entity.Admin;
 
@@ -17,14 +18,14 @@ public class AdminConverter {
         return dto;
     }
 
-    public static Admin toEntity(AdminDto dto) {
+    public static Admin toEntity(AdminCreateDto dto) {
 
         Admin admin = new Admin();
 
         admin.setAdminName(dto.getAdminName());
         admin.setEmail(dto.getEmail());
         admin.setRole(dto.getRole());
-
+        admin.setPassword(dto.getPassword());
         return admin;
     }
 }
