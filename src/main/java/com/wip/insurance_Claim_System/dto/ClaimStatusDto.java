@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 
 public class ClaimStatusDto {
 
-    private Long historyId;
+    private Long statusId;
 
     @NotBlank(message = "Status is required")
     private String status;
@@ -30,24 +30,24 @@ public class ClaimStatusDto {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ClaimStatusDto(Long historyId, @NotBlank(message = "Status is required") String status,
+	public ClaimStatusDto(Long statusId, @NotBlank(message = "Status is required") String status,
 			@NotBlank(message = "Remarks are required") String remarks,
 			@NotNull(message = "Updated date is required") LocalDateTime updatedDate,
 			@NotNull(message = "Claim Id is required") Long claimId) {
 		super();
-		this.historyId = historyId;
+		this.statusId = statusId;
 		this.status = status;
 		this.remarks = remarks;
 		this.updatedDate = updatedDate;
 		this.claimId = claimId;
 	}
 
-	public Long getHistoryId() {
-		return historyId;
+	public Long getStatusId() {
+		return statusId;
 	}
 
-	public void setHistoryId(Long historyId) {
-		this.historyId = historyId;
+	public void setStatusId(Long historyId) {
+		this.statusId = historyId;
 	}
 
 	public String getClaimStatus() {
@@ -84,7 +84,7 @@ public class ClaimStatusDto {
 
 	@Override
 	public String toString() {
-		return "ClaimStatusDto [historyId=" + historyId + ", status=" + status + ", remarks=" + remarks
+		return "ClaimStatusDto [statusId=" + statusId + ", status=" + status + ", remarks=" + remarks
 				+ ", updatedDate=" + updatedDate + ", claimId=" + claimId + "]";
 	}
     

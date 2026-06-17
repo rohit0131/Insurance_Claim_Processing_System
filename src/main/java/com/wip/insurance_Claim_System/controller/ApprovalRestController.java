@@ -20,7 +20,7 @@ public class ApprovalRestController {
     private ApprovalService approvalService;
 
     // APPROVE CLAIM
-    @PostMapping("/addapprove")
+    @PostMapping("/addApproval")
     public ResponseEntity<?> approveClaim(@Valid @RequestBody ApprovalDto approvalDto) {
 
        approvalService.saveApproval(approvalDto);

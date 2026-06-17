@@ -18,7 +18,7 @@ public class PolicyRestController {
     private PolicyService policyService;
 
     // SAVE POLICY
-    @PostMapping("/savePolicy")
+    @PostMapping("/addPolicy")
     public ResponseEntity<String> savePolicy(@RequestBody PolicyDto policyDto) {
 
         policyService.savePolicy(policyDto);

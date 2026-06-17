@@ -9,13 +9,13 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "claim_history")
+@Table(name = "claim_Status")
 public class ClaimStatus {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "status_id")
-    private Long historyId;
+    private Long statusId;
 
     @Column(nullable = false, length = 20)
     private String status;
@@ -35,21 +35,21 @@ public class ClaimStatus {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ClaimStatus(Long historyId, String status, String remarks, LocalDateTime updatedDate, Claim claim) {
+	public ClaimStatus(Long statusId, String status, String remarks, LocalDateTime updatedDate, Claim claim) {
 		super();
-		this.historyId = historyId;
+		this.statusId = statusId;
 		this.status = status;
 		this.remarks = remarks;
 		this.updatedDate = updatedDate;
 		this.claim = claim;
 	}
 
-	public Long getHistoryId() {
-		return historyId;
+	public Long getStatusId() {
+		return statusId;
 	}
 
-	public void setHistoryId(Long historyId) {
-		this.historyId = historyId;
+	public void setStatusId(Long statusId) {
+		this.statusId = statusId;
 	}
 
 	public String getStatus() {
@@ -86,7 +86,7 @@ public class ClaimStatus {
 
 	@Override
 	public String toString() {
-		return "ClaimStatus [historyId=" + historyId + ", status=" + status + ", remarks=" + remarks + ", updatedDate="
+		return "ClaimStatus [statusId=" + statusId + ", status=" + status + ", remarks=" + remarks + ", updatedDate="
 				+ updatedDate + ", claim=" + claim + "]";
 	}
     

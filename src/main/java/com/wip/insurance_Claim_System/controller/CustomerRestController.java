@@ -24,7 +24,7 @@ public class CustomerRestController {
     private CustomerService customerService;
 
     
-    @PostMapping("/  ")
+    @PostMapping("/login")
     public ResponseEntity<CustomerDto> login( @RequestBody CustomerLoginDto customerLoginDto) {
 
         return ResponseEntity.ok(customerService.login(customerLoginDto));

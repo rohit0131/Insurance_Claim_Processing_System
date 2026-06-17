@@ -54,9 +54,9 @@ public class ClaimStatusServiceImpl implements ClaimStatusService {
     @Override
     public List<ClaimStatusDto> updateClaimStatus(ClaimStatusDto dto) {
 
-        ClaimStatus status = claimStatusRepository.findById(dto.getHistoryId())
+        ClaimStatus status = claimStatusRepository.findById(dto.getStatusId())
                 .orElseThrow(() ->
-                        new ResourceNotFoundException("ClaimStatus", "historyId", dto.getHistoryId()));
+                        new ResourceNotFoundException("ClaimStatus", "historyId", dto.getStatusId()));
 
         status.setStatus(dto.getClaimStatus());
         status.setRemarks(dto.getRemarks());

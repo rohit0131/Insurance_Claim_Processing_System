@@ -1,0 +1,69 @@
+/* RESET */
+body {
+    font-family: "Segoe UI", sans-serif;
+    background: #f6f8fb;
+}
+
+/* NAVBAR */
+.custom-navbar {
+    background: linear-gradient(90deg, #1d4ed8, #2563eb);
+    padding: 12px 0;
+}
+
+/* HERO SECTION */
+.hero-section {
+    background: linear-gradient(rgba(37,99,235,0.85), rgba(37,99,235,0.85)),
+                url("https://images.unsplash.com/photo-1581091870622-1e7f4b3b8b2b");
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 90px 20px;
+}
+
+.hero-section h1 {
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.hero-section p {
+    font-size: 18px;
+    opacity: 0.9;
+}
+
+/* SEARCH BOX */
+.search-box {
+    max-width: 600px;
+    margin: 25px auto 0;
+}
+
+/* MODULE CARDS */
+.module-card {
+    background: white;
+    padding: 25px;
+    border-radius: 14px;
+    text-align: center;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    transition: 0.3s ease;
+}
+
+.module-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+
+.module-card h4 {
+    margin-bottom: 10px;
+}
+
+.module-card p {
+    color: #6b7280;
+}
+
+/* FOOTER */
+.footer {
+    margin-top: 50px;
+    text-align: center;
+    padding: 18px;
+    background: #1e3a8a;
+    color: white;
+}

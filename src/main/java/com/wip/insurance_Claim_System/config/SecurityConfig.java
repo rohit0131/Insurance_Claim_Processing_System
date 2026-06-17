@@ -24,10 +24,11 @@ public class SecurityConfig {
             .csrf(csrf -> csrf.disable())
 
             .authorizeHttpRequests(auth -> auth
+            		.requestMatchers("/actuator/**").permitAll()
 
                 .requestMatchers("/admin/login", "/customer/login").permitAll()
 
-                .requestMatchers("/admin/**").hasRole("ADMIN")
+                .requestMatchers("/admin/**").permitAll()
 
                 
                 .requestMatchers("/customer/**").hasAnyRole("ADMIN", "CUSTOMER")
@@ -36,9 +37,9 @@ public class SecurityConfig {
 
                 .requestMatchers("/policy/**").hasAnyRole("ADMIN", "CUSTOMER")
 
-                .requestMatchers("/approval/**").hasRole("ADMIN")
-
-                .requestMatchers("/claimstatus/**").hasRole("ADMIN")
+                .requestMatchers("/approval/**").hasAnyRole("ADMIN", "CUSTOMER")
+                
+                .requestMatchers("/claimstatus/**").hasAnyRole("ADMIN", "CUSTOMER")
 
                 .anyRequest().authenticated()
             )
