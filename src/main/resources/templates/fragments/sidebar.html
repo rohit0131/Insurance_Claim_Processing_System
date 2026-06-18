@@ -1,0 +1,35 @@
+<div th:fragment="sidebar">
+
+<div class="sidebar">
+
+    <div class="sidebar-header">
+        <h5>Insurance Panel</h5>
+    </div>
+
+    <!-- ADMIN MENU -->
+    <div sec:authorize="hasRole('ADMIN')">
+
+        <a href="/ui/admin/home" class="sidebar-link">🏠 Admin Overview</a>
+        <a href="/claim/getAllClaims" class="sidebar-link">
+            📑 Claim Approvals <span class="badge bg-danger">5</span>
+        </a>
+        <a href="/policy/getAllPolicies" class="sidebar-link">📄 Policy Management</a>
+        <a href="/customer/listAllCustomer" class="sidebar-link">👤 Customers</a>
+        <a href="#" class="sidebar-link">⚙ System Logs</a>
+
+    </div>
+
+    <!-- CUSTOMER MENU -->
+    <div sec:authorize="hasRole('CUSTOMER')">
+
+        <a href="/ui/customer/home" class="sidebar-link">🏠 Dashboard</a>
+        <a href="/policy/getAllPolicies" class="sidebar-link">📄 My Policies</a>
+        <a href="/claim/getAllClaims" class="sidebar-link">📑 File Claim</a>
+        <a href="#" class="sidebar-link">💳 Payment History</a>
+        <a href="#" class="sidebar-link">🆘 Support</a>
+
+    </div>
+
+</div>
+
+</div>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<div th:fragment="header">
+
+<nav class="navbar navbar-expand-lg top-navbar shadow-sm">
+
+    <div class="container-fluid">
+
+        <!-- Logo -->
+        <a class="navbar-brand fw-bold text-white" href="/ui/home">
+            🛡 InsurancePro
+        </a>
+
+        <!-- Toggle -->
+        <button class="btn btn-sm btn-outline-light d-lg-none" data-bs-toggle="collapse" data-bs-target="#sidebar">
+            ☰
+        </button>
+
+        <!-- Right Section -->
+        <div class="ms-auto d-flex align-items-center gap-3">
+
+            <!-- Notifications -->
+            <div class="dropdown">
+                <a class="text-white position-relative" data-bs-toggle="dropdown">
+                    🔔
+                    <span class="badge bg-danger notification-dot">3</span>
+                </a>
+
+                <ul class="dropdown-menu dropdown-menu-end p-2 shadow">
+                    <li><small>New Claim Submitted</small></li>
+                    <li><small>Policy Approved</small></li>
+                </ul>
+            </div>
+
+            <!-- Login / Logout -->
+            <div sec:authorize="isAnonymous()">
+                <a href="/login" class="btn btn-sm btn-light">Login</a>
+                <a href="/register" class="btn btn-sm btn-outline-light">Register</a>
+            </div>
+
+            <!-- User Menu -->
+            <div sec:authorize="isAuthenticated()" class="dropdown">
+
+                <a class="dropdown-toggle text-white text-decoration-none"
+                   data-bs-toggle="dropdown">
+
+                    👤 <span sec:authentication="name"></span>
+                </a>
+
+                <ul class="dropdown-menu dropdown-menu-end shadow">
+
+                    <li class="px-3 py-2">
+                        <small class="text-muted">
+                            Role:
+                            <span sec:authentication="principal.authorities"></span>
+                        </small>
+                    </li>
+
+                    <li><hr></li>
+
+                    <li>
+                        <form th:action="@{/logout}" method="post">
+                            <button class="dropdown-item text-danger">Logout</button>
+                        </form>
+                    </li>
+
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+</nav>
+
+</div>
+</html>
